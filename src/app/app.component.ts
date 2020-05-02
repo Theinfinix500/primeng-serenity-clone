@@ -6,6 +6,7 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
+import { SideNavComponent } from './core/side-nav/side-nav.component';
 
 @Component({
   selector: 'app-root',
@@ -13,18 +14,25 @@ import { fromEvent } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  @ViewChild('sidenav', { static: false }) sideNav: ElementRef;
+  @ViewChild(SideNavComponent, { static: false })
+  sideNavComponent: SideNavComponent;
   @ViewChild('layoutWrapper', { static: false }) layoutWrapper: ElementRef;
 
   ngOnInit() {}
 
   ngAfterViewInit() {
-    fromEvent(this.sideNav.nativeElement, 'mouseover').subscribe(() => {
+    fromEvent(
+      this.sideNavComponent.sideNav.nativeElement,
+      'mouseover'
+    ).subscribe(() => {
       this.layoutWrapper.nativeElement.classList.toggle(
         'layout-wrapper-active'
       );
     });
-    fromEvent(this.sideNav.nativeElement, 'mouseout').subscribe(() => {
+    fromEvent(
+      this.sideNavComponent.sideNav.nativeElement,
+      'mouseout'
+    ).subscribe(() => {
       this.layoutWrapper.nativeElement.classList.toggle(
         'layout-wrapper-active'
       );
