@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
+import { AppRoutingModule } from './app-routing.module';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +18,9 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     SharedModule,
     InputTextModule,
+    AuthModule,
+    PagesModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,41 +1,10 @@
-import {
-  Component,
-  ViewChild,
-  ElementRef,
-  OnInit,
-  AfterViewInit,
-} from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { SideNavComponent } from './core/side-nav/side-nav.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: ` <router-outlet></router-outlet> `,
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  @ViewChild(SideNavComponent, { static: false })
-  sideNavComponent: SideNavComponent;
-  @ViewChild('layoutWrapper', { static: false }) layoutWrapper: ElementRef;
-
+export class AppComponent implements OnInit {
   ngOnInit() {}
-
-  ngAfterViewInit() {
-    fromEvent(
-      this.sideNavComponent.sideNav.nativeElement,
-      'mouseover'
-    ).subscribe(() => {
-      this.layoutWrapper.nativeElement.classList.toggle(
-        'layout-wrapper-active'
-      );
-    });
-    fromEvent(
-      this.sideNavComponent.sideNav.nativeElement,
-      'mouseout'
-    ).subscribe(() => {
-      this.layoutWrapper.nativeElement.classList.toggle(
-        'layout-wrapper-active'
-      );
-    });
-  }
 }
